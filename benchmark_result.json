@@ -1,0 +1,81 @@
+{
+  "timestamp_utc": "2026-10-04T04:00:42+00:00",
+  "environment": {
+    "hostname": "ip-10-0-10-145",
+    "ec2_instance_type": "c7i-flex.large",
+    "ec2_region": "ap-southeast-2",
+    "ec2_availability_zone": "ap-southeast-2a",
+    "cpu_count": 2,
+    "ram_total_gb": 3.73,
+    "platform": "Linux-6.8.0-1066-aws-x86_64-with-glibc2.35",
+    "python": "3.10.12",
+    "lightgbm": "4.7.0",
+    "scikit_learn": "1.7.2",
+    "pandas": "2.3.3",
+    "numpy": "2.2.6"
+  },
+  "dataset": {
+    "path": "/home/ubuntu/ml-benchmark/creditcard.csv",
+    "rows": 284807,
+    "columns": 31,
+    "fraud_rows": 492,
+    "fraud_ratio": 0.001727,
+    "train_rows": 205060,
+    "val_rows": 22785,
+    "test_rows": 56962
+  },
+  "model": {
+    "type": "lightgbm.LGBMClassifier",
+    "params": {
+      "n_estimators": 2000,
+      "learning_rate": 0.05,
+      "num_leaves": 31,
+      "subsample": 0.8,
+      "subsample_freq": 1,
+      "colsample_bytree": 0.8,
+      "random_state": 42,
+      "n_jobs": -1,
+      "verbose": -1
+    },
+    "early_stopping": {
+      "metric": "average_precision",
+      "patience": 100
+    },
+    "best_iteration": 214
+  },
+  "timing": {
+    "load_data_s": 1.028,
+    "training_s": 6.863
+  },
+  "metrics": {
+    "auc_roc": 0.983782,
+    "auprc": 0.835009,
+    "accuracy": 0.999438,
+    "f1": 0.827957,
+    "precision": 0.875,
+    "recall": 0.785714,
+    "threshold": 0.5,
+    "confusion_matrix": {
+      "tn": 56853,
+      "fp": 11,
+      "fn": 21,
+      "tp": 77
+    }
+  },
+  "inference": {
+    "latency_1_row": {
+      "runs": 200,
+      "mean_ms": 0.6898,
+      "median_ms": 0.6887,
+      "p95_ms": 0.7243,
+      "p99_ms": 0.7387
+    },
+    "throughput_1000_rows": {
+      "batch_size": 1000,
+      "runs": 20,
+      "batch_median_ms": 7.6003,
+      "batch_mean_ms": 7.6079,
+      "rows_per_second": 131573.6
+    }
+  }
+}

@@ -102,7 +102,7 @@ resource "aws_security_group" "bastion_sg" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"] 
+    cidr_blocks = ["123.16.15.189/32", "101.99.13.39/32"] # laptop public IPs (home network egresses via two IPs)
   }
   egress {
     from_port   = 0

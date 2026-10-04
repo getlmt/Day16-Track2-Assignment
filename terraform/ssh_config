@@ -1,0 +1,15 @@
+Host lab-bastion
+    HostName 3.106.170.151
+    User ubuntu
+    IdentityFile ./lab-key
+    IdentitiesOnly yes
+    StrictHostKeyChecking accept-new
+    ServerAliveInterval 30
+Host lab-cpu
+    HostName 10.0.10.145
+    User ubuntu
+    IdentityFile ./lab-key
+    IdentitiesOnly yes
+    StrictHostKeyChecking accept-new
+    ServerAliveInterval 30
+    ProxyJump lab-bastion
