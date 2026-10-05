@@ -45,8 +45,8 @@ Thêm: AUPRC (average precision) 0,8350 · Confusion matrix trên test (ngưỡn
 ## Thời gian và chi phí
 
 - `terraform apply` bắt đầu 10:33:17 → hạ tầng sẵn sàng 10:42:23 (gồm lần apply đầu bị từ chối `t3.medium` và lần apply lại); SSH và cài môi trường xong ~10:44; `terraform destroy` 11:08:33 → 11:09:51 (*Destroy complete! Resources: 27 destroyed*), đã kiểm tra không còn instance/NAT/EIP/ALB/VPC.
-- Tổng thời gian hạ tầng chạy ~36 phút; chi phí ước tính < $0,20, trừ vào credit Free plan.
-- **Billing:** `screenshots/04_billing.png` chụp Cost Explorer lúc 11:25 ngày 04/10 (khoảng 01–04/10, theo ngày) — **chưa có dữ liệu của ngày 04/10** (Total cost $0.00) vì dữ liệu chi phí AWS cập nhật trễ tới 24 giờ; runbook đã nêu ở mục *Lỗi thường gặp*: "Billing chưa hiện chi phí do dữ liệu cập nhật trễ". Các dịch vụ phát sinh chi phí trong lab: EC2 (Bastion `t3.micro`, node `c7i-flex.large`, EBS), NAT Gateway + Elastic IP, Application Load Balancer, Public IPv4.
+- Tổng thời gian hạ tầng chạy ~36 phút; **chi phí thực tế $0,11**, trừ vào credit Free plan.
+- **Billing:** `screenshots/04_billing.png` chụp Cost Explorer lúc 11:58 ngày 05/10: Total cost **$0,11**, Service count **6**. Tài nguyên của lab phát sinh chi phí: EC2 (Bastion `t3.micro`, node `c7i-flex.large`, EBS), NAT Gateway + Elastic IP, Application Load Balancer, Public IPv4. Dữ liệu chi phí của ngày 04/10 chỉ hiện sau ~1 ngày (lúc 11:25 ngày 04/10 Cost Explorer vẫn báo $0.00), đúng như runbook nêu ở mục *Lỗi thường gặp*: "Billing chưa hiện chi phí do dữ liệu cập nhật trễ".
 
 ## File nộp
 
@@ -54,5 +54,5 @@ Thêm: AUPRC (average precision) 0,8350 · Confusion matrix trên test (ngưỡn
 - `screenshots/01_benchmark_output.png` — output `python3 benchmark.py` trên compute node
 - `screenshots/02_top.png` — `top` trong lúc benchmark chạy
 - `screenshots/03_free_iplink.png` — `free -h` và `ip -s link`
-- `screenshots/04_billing.png` — AWS Cost Explorer (chụp 11:25 04/10, dữ liệu chưa cập nhật — xem mục *Thời gian và chi phí*)
+- `screenshots/04_billing.png` — AWS Cost Explorer (chụp 11:58 05/10): tổng chi phí $0,11, 6 dịch vụ
 - `terraform.zip` — thư mục `terraform/` đã chạy (bỏ SSH key, state, `.terraform/`)
